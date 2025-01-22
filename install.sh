@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+set -e
+
 # install homebrew with noninteractive
 # https://github.com/Homebrew/install/?tab=readme-ov-file#install-homebrew-on-macos-or-linux
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
