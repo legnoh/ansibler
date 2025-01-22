@@ -21,7 +21,20 @@ eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 brew install ansible
 
 # relink openssl(to prevent unlucky link loss)
-brew unlink openssl@3 && brew link openssl@3
+brew unlink openssl && brew link openssl
+
+# check interpreter
+interpreter=$(ansible --version | grep 'python version' | sed -n 's/.*(\(.*\)).*/\1/p')
+
+# create ~/.ansible.cfg
+cat <<EOF > $HOME/.ansible.cfg
+[defaults]
+interpreter_python=$interpreter
+roles_path=$HOME/.ansible/roles
+EOF
+
+# check behavior
+ansible --version
 
 # complete!
 echo "--------------------------------------"
