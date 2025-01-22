@@ -20,6 +20,9 @@ eval "$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
 # install ansible with homebrew
 brew install ansible
 
+# relink openssl(to prevent unlucky link loss)
+brew unlink openssl@3 && brew link openssl@3
+
 # complete!
 echo "--------------------------------------"
 echo "🎉 Ansible was successfully installed!"
